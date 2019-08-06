@@ -34,13 +34,16 @@ namespace Steve
         #region TbCpuUtilization_ValueChanged
         private void TbCpuUtilization_ValueChanged(object sender, EventArgs e)
         {
-            int Value = ((TrackBar)sender).Value;
-            lblCpu.Text = $"{Value.ToString()}%";
+            lblCpu.Text = $"{tbCpuUtilization.Value.ToString()}%";
 
-            _CpuTokenSource.Cancel();
-            _CpuTokenSource = new CancellationTokenSource();
+            if (_CpuTokenSource != null)
+            {
+                _CpuTokenSource.Cancel();
+                _CpuTokenSource = new CancellationTokenSource();
 
-            LoadCpu(Value, _CpuTokenSource.Token);
+                LoadCpu(tbCpuUtilization.Value, _CpuTokenSource.Token);
+            }
+
         }
         #endregion TbCpuUtilization_ValueChanged
         #endregion Events..

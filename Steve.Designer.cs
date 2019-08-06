@@ -38,7 +38,7 @@
             // 
             // tbCpuUtilization
             // 
-            this.tbCpuUtilization.Location = new System.Drawing.Point(12, 80);
+            this.tbCpuUtilization.Location = new System.Drawing.Point(12, 61);
             this.tbCpuUtilization.Maximum = 100;
             this.tbCpuUtilization.Name = "tbCpuUtilization";
             this.tbCpuUtilization.Size = new System.Drawing.Size(341, 45);
@@ -50,7 +50,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(203, 43);
+            this.label1.Location = new System.Drawing.Point(203, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 16);
             this.label1.TabIndex = 1;
@@ -59,7 +59,7 @@
             // lblCpu
             // 
             this.lblCpu.AutoSize = true;
-            this.lblCpu.Location = new System.Drawing.Point(324, 45);
+            this.lblCpu.Location = new System.Drawing.Point(324, 26);
             this.lblCpu.Name = "lblCpu";
             this.lblCpu.Size = new System.Drawing.Size(21, 13);
             this.lblCpu.TabIndex = 2;
@@ -72,16 +72,17 @@
             this.cbCorePreference.Items.AddRange(new object[] {
             "Single-Core",
             "Multi-Core"});
-            this.cbCorePreference.Location = new System.Drawing.Point(12, 42);
+            this.cbCorePreference.Location = new System.Drawing.Point(12, 23);
             this.cbCorePreference.Name = "cbCorePreference";
             this.cbCorePreference.Size = new System.Drawing.Size(121, 21);
             this.cbCorePreference.TabIndex = 3;
+            this.cbCorePreference.SelectedIndexChanged += new System.EventHandler(this.TbCpuUtilization_ValueChanged);
             // 
             // Steve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(402, 153);
+            this.ClientSize = new System.Drawing.Size(367, 115);
             this.Controls.Add(this.cbCorePreference);
             this.Controls.Add(this.lblCpu);
             this.Controls.Add(this.label1);
