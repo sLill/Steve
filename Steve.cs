@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BergPerformanceServices;
 
 namespace Steve
 {
@@ -62,6 +63,7 @@ namespace Steve
         {
             int ThreadCount = cbCorePreference.SelectedIndex == 1 ? Environment.ProcessorCount : 1;
 
+            CpuPerformanceData CpuPerformanceData = new CpuPerformanceData(1000);
             for (int i = 0; i < ThreadCount; i++)
             {
                 Task.Run(() =>
