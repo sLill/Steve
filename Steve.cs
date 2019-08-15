@@ -52,10 +52,14 @@ namespace Steve
         #region InitializeLoadCpu
         private void InitializeLoadCpu()
         {
-            cbCorePreference.SelectedIndex = 0;
+            BergCpuMonitor BergCpuMonitor = new BergCpuMonitor(1000);
 
+            cbCorePreference.SelectedIndex = 0;
             _CpuTokenSource = new CancellationTokenSource();
+
+            BergCpuMonitor.BeginWatch("Watch1");
             LoadCpu(0, _CpuTokenSource.Token);
+            BergCpuMonitor.EndWatch("Watch1");
         }
         #endregion InitializeLoadCpu
 
@@ -63,7 +67,6 @@ namespace Steve
         {
             int ThreadCount = cbCorePreference.SelectedIndex == 1 ? Environment.ProcessorCount : 1;
 
-            CpuPerformanceData CpuPerformanceData = new CpuPerformanceData(1000);
             for (int i = 0; i < ThreadCount; i++)
             {
                 Task.Run(() =>
