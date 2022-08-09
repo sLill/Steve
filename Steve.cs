@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BergPerformanceServices;
 
 namespace Steve
 {
@@ -65,12 +66,16 @@ namespace Steve
         #region InitializeLoadCpu
         private void InitializeLoadCpu()
         {
+            BergCpuMonitor BergCpuMonitor = new BergCpuMonitor(1000);
+
             cbCorePreference.SelectedIndex = 0;
+            _CpuTokenSource = new CancellationTokenSource();
 
 
 
             _CpuTokenSource = new CancellationTokenSource();
             LoadCpu(0, _CpuTokenSource.Token);
+            BergCpuMonitor.EndWatch("Watch1");
         }
         #endregion InitializeLoadCpu
 
