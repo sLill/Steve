@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,15 +20,28 @@ namespace Steve
         #endregion Member Variables..
 
         #region Constructors..
-        #region Steve
         public Steve()
         {
             InitializeComponent();
 
-            InitializeLoadCpu();
+            int r = DoThing();
+
+            //InitializeLoadCpu();
+
+            //var stopwatch = Stopwatch.StartNew();
+            //stopwatch.Stop();
+            //Debug.WriteLine(stopwatch.Elapsed);
+
+            //stopwatch = Stopwatch.StartNew();
+            //stopwatch.Stop();
+            //Debug.WriteLine(stopwatch.Elapsed);
         }
-        #endregion Steve
         #endregion Constructors..
+
+        private int DoThing()
+        {
+           
+        }
 
         #region Methods..
         #region Events..
@@ -53,6 +67,8 @@ namespace Steve
         {
             cbCorePreference.SelectedIndex = 0;
 
+
+
             _CpuTokenSource = new CancellationTokenSource();
             LoadCpu(0, _CpuTokenSource.Token);
         }
@@ -73,9 +89,9 @@ namespace Steve
 
                         while (true)
                         {
-                        // Make the loop go on for "percentage" milliseconds then sleep the 
-                        // remaining percentage milliseconds. So 40% utilization means work 40ms and sleep 60ms
-                        if (Watch.ElapsedMilliseconds > percentage)
+                            // Make the loop go on for "percentage" milliseconds then sleep the 
+                            // remaining percentage milliseconds. So 40% utilization means work 40ms and sleep 60ms
+                            if (Watch.ElapsedMilliseconds > percentage)
                             {
                                 Thread.Sleep(100 - percentage);
                                 Watch.Reset();
